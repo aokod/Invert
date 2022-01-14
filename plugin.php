@@ -32,9 +32,17 @@ function init()
 
 function addToWrapper()
 {
-	if (!empty($this->eso->user["useDarkMode"])) $this->eso->addCSS("plugins/Invert/darkMode.css");
-	if (!empty($this->eso->user["fixOpacity"])) $this->eso->addCSS("plugins/Invert/fixOpacity.css");
-	if (!empty($this->eso->user["useDarkMode"]) && !empty($this->eso->user["fixOpacity"])) $this->eso->addCSS("plugins/Invert/bothModes.css");
+	if (!empty($this->eso->user["useDarkMode"])) {
+		$this->eso->addToHead("<meta name='theme-color' content='#222'/>");
+		$this->eso->addCSS("plugins/Invert/darkMode.css");
+	}
+	if (!empty($this->eso->user["fixOpacity"])) {
+		$this->eso->addCSS("plugins/Invert/fixOpacity.css");
+	}
+	if (!empty($this->eso->user["useDarkMode"]) && !empty($this->eso->user["fixOpacity"])) {
+		$this->eso->addToHead("<meta name='theme-color' content='#444'/>");
+		$this->eso->addCSS("plugins/Invert/bothModes.css");
+	}
 }
 
 function useDarkMode(&$settings)
